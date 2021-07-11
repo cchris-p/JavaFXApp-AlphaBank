@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bankingsystem;
+package alphabank.bank;
 
 /**
  *
  * @author pyles
  */
-public class Controller {
-    
+public class Recipient {
+    public String name;
+    public int accountNumber;
+    public String dateAdded;
 }
