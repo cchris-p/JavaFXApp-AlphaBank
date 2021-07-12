@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package alphabank.bank;
+package alphabank.user;
 
 import alphabank.ActionResult;
 import java.util.HashMap;
 import java.util.Map;
+import alphabank.App;
 
 /**
  *
@@ -30,6 +31,8 @@ public class Bank {
         Account account = accounts.get(id);
 
         if (account != null) {
+            System.out.println("Login succcessful.");
+            App.isLoggedIn = true;
             return ActionResult.success(account.getAccountData());
         } else {
             return ActionResult.fail("No account with id: " + id);

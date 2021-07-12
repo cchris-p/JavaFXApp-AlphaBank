@@ -5,23 +5,34 @@
  */
 package alphabank.login;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import alphabank.App;
+import alphabank.SceneController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author pyles
  */
-public class LoginScreenController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+public class LoginScreenController {
     
+    @FXML
+    private TextField myTextField;
+        SceneController sceneController = new SceneController();
+        
+    int id;
+    
+    public void submit(ActionEvent event) {
+        try {
+            id = Integer.parseInt(myTextField.getText());
+            App.bankingSystem.login(id);  
+            sceneController.renderHomeScreen(event);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }

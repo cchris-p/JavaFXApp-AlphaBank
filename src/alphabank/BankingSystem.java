@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package alphabank;
-
-import alphabank.bank.Bank;
-import alphabank.bank.AccountData;
+import alphabank.user.Bank;
+import alphabank.user.AccountData;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 

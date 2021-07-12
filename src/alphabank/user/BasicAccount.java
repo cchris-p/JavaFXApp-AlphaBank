@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package alphabank.bank;
+package alphabank.user;
 
 /**
  *
  * @author pyles
  */
-public class Recipient {
-    public String name;
-    public int accountNumber;
-    public String dateAdded;
+public class BasicAccount extends Account {
+
+    public BasicAccount(AccountData accountData) {
+        super(accountData);
+    }
 }
