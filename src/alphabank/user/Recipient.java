@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package alphabank.user;
 
 /**
@@ -13,4 +8,10 @@ public class Recipient {
     public String name;
     public int accountNumber;
     public String dateAdded;
+
+    Recipient(String name, int accountNumber, String dateAdded) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.dateAdded = dateAdded;
+    }
 }

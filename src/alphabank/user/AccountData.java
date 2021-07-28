@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package alphabank.user;
 
 /**
@@ -14,14 +9,15 @@ public final class AccountData {
     private final int id;
     private final String name;
     private final String email;
-
     private final int balance;
+    private final String accountType;
 
-    AccountData(int id, String name, String email, int balance) {
+    AccountData(int id, String name, String email, int balance, String accountType) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.balance = balance;
+        this.accountType = accountType;
     }
 
     public int getId() {
@@ -40,11 +36,16 @@ public final class AccountData {
         return balance;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
     @Override
     public String toString() {
-        return "Account id: " + id + '\n' +
-                "Name: " + name + '\n' +
-                "Email: " + email + '\n' +
-                "Balance: " + balance;
+        return "Account id: " + id + '\n'
+                + "Name: " + name + '\n'
+                + "Email: " + email + '\n'
+                + "Balance: " + balance + '\n'
+                + "AccountType: " + accountType;
     }
 }
