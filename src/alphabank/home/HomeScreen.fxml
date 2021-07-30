@@ -16,7 +16,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="balanceInfo" layoutX="272.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$">
+      <Text fx:id="balanceInfo" layoutX="272.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$">
          <font>
             <Font size="24.0" />
          </font>

@@ -32,7 +32,6 @@ public class HomeScreenController implements Initializable {
     private Button sendCashButton;
 
     // Set account data variables
-    private int balance;
     private int id = LoginScreenController.id;
     private AccountData accountData = App.bankingSystem.bank.getAccountById(id).getData();
     private String accountType = accountData.getAccountType();
@@ -42,51 +41,39 @@ public class HomeScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         int balance = accountData.getBalance();
         balanceInfo.setText("$" + balance);
         accountTypeInfo.setText(accountType + " Account");
 
         if (accountType == "Premium") {
             sendCashButton.setVisible(true);
-        } 
+        }
     }
 
     /**
      * Initializes the controller class.
      */
     public void withdraw(ActionEvent event) {
-        try {
-            int amount = Integer.parseInt(areaInfo.getText());
-            App.bankingSystem.withdraw(amount);
+        int amount = Integer.parseInt(areaInfo.getText());
+        App.bankingSystem.withdraw(amount);
 
-            balance = getBalance(id);
+        int balance = getBalance(id);
 
-            // Render balance to screen
-            balanceInfo.setText("$" + Integer.toString(balance));
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+        // Render balance to screen
+        balanceInfo.setText("$" + Integer.toString(balance));
     }
 
     /**
      * Deposits specified amount.
      */
     public void deposit(ActionEvent event) {
-        try {
-            int amount = Integer.parseInt(areaInfo.getText());
-            App.bankingSystem.deposit(amount);
+        int amount = Integer.parseInt(areaInfo.getText());
+        App.bankingSystem.deposit(amount);
 
-            balance = getBalance(id);
+        int balance = getBalance(id);
 
-            // Render balance to screen
-            balanceInfo.setText("$" + Integer.toString(balance));
-
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+        // Render balance to screen
+        balanceInfo.setText("$" + Integer.toString(balance));
     }
 
     /**
