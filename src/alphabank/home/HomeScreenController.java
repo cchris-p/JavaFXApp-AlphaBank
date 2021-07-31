@@ -7,6 +7,8 @@ import javafx.scene.control.TextArea;
 import alphabank.App;
 import alphabank.login.LoginScreenController;
 import alphabank.user.AccountData;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 /**
@@ -39,6 +44,9 @@ public class HomeScreenController implements Initializable {
     @FXML
     private ListView recentList;
 
+    @FXML
+    private Circle profilePicture;
+
     // Set account data variables
     private int id = LoginScreenController.id;
     private AccountData accountData = App.bankingSystem.bank.getAccountById(id).getData();
@@ -49,6 +57,9 @@ public class HomeScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,19 +67,25 @@ public class HomeScreenController implements Initializable {
         balanceInfo.setText("$" + balance);
         accountTypeInfo.setText(accountType + " Account");
 
+        // Load profile picture
+        Image img = new Image(new File("src/alphabank/user/profile" + id + ".png").toURI().toString());
+        profilePicture.setFill(new ImagePattern(img));
+
         if (accountType == "Premium") {
             sendCashButton.setVisible(true);
         }
 
         // Add message and refresh list
         if (transactions.isEmpty()) {
-            transactions.add("Starting balance: $" + balance);
+            transactions.add("Balance: $" + balance);
             refreshTransactions();
         }
     }
 
     /**
      * Initializes the controller class.
+     *
+     * @param event
      */
     public void withdraw(ActionEvent event) {
         int amount = Integer.parseInt(areaInfo.getText());
@@ -87,6 +104,8 @@ public class HomeScreenController implements Initializable {
 
     /**
      * Deposits specified amount.
+     *
+     * @param event
      */
     public void deposit(ActionEvent event) {
         int amount = Integer.parseInt(areaInfo.getText());
@@ -106,19 +125,22 @@ public class HomeScreenController implements Initializable {
 
     /**
      * Withdraws specified amount.
+     *
+     * @param event
      */
     public void sendCash(ActionEvent event) {
         try {
             App.sceneController.renderSendCashScreen(event);
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e);
-
         }
     }
 
     /**
      * Logs out of session and changes scene.
+     *
+     * @param event
      */
     public void logOut(ActionEvent event) {
         try {
@@ -131,6 +153,8 @@ public class HomeScreenController implements Initializable {
 
     /**
      * Gets current balance.
+     *
+     * @param id
      */
     private int getBalance(int id) {
         AccountData accountData = App.bankingSystem.bank.getAccountById(id).getData();
@@ -141,6 +165,8 @@ public class HomeScreenController implements Initializable {
 
     /**
      * Prints current date and time.
+     *
+     * @return tag
      */
     public String printDate() {
         LocalDateTime date = LocalDateTime.now();

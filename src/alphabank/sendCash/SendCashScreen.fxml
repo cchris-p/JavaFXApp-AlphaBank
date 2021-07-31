@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="545.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alphabank.sendCash.SendCashScreenController">
    <children>
-      <Circle fill="DODGERBLUE" layoutX="300.0" layoutY="87.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="profilePicture" fill="DODGERBLUE" layoutX="300.0" layoutY="87.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
       <Text layoutX="270.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance">
          <font>
             <Font size="18.0" />

@@ -4,6 +4,7 @@ import alphabank.ActionResult;
 import java.util.HashMap;
 import java.util.Map;
 import alphabank.App;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 public class Bank {
 
     public Map<Integer, Account> accounts = new HashMap<>();
+    
+
 
     public Bank() {
         accounts.put(1000, new BasicAccount(new AccountData(
@@ -25,6 +28,7 @@ public class Bank {
     }
 
     static ArrayList<Recipient> tempContacts = new ArrayList<Recipient>();
+
     static {
         tempContacts.add(new Recipient("David", 1132, "11/22/2020"));
         tempContacts.add(new Recipient("Sarah", 3494, "04/19/2019"));
@@ -41,8 +45,8 @@ public class Bank {
             return ActionResult.fail("No account with id: " + id);
         }
     }
-    
-    public ArrayList<Recipient> getContactsList(){
+
+    public ArrayList<Recipient> getContactsList() {
         return tempContacts;
     }
 

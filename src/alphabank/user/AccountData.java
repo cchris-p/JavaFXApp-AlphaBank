@@ -1,5 +1,7 @@
 package alphabank.user;
 
+import java.io.File;
+
 /**
  *
  * @author pyles
@@ -48,6 +50,5 @@ public final class AccountData {
                 + "Balance: " + balance + '\n'
                 + "AccountType: " + accountType;
     }
-
 
 }

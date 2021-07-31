@@ -5,6 +5,7 @@ import alphabank.home.HomeScreenController;
 import alphabank.login.LoginScreenController;
 import alphabank.user.AccountData;
 import alphabank.user.Recipient;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -17,6 +18,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 /**
@@ -37,6 +41,9 @@ public class SendCashScreenController implements Initializable {
 
     @FXML
     private Text accountTypeInfo;
+
+    @FXML
+    private Circle profilePicture;
 
     // Get account data
     private HomeScreenController home = new HomeScreenController();
@@ -59,6 +66,10 @@ public class SendCashScreenController implements Initializable {
         int balance = accountData.getBalance();
         balanceInfo.setText("$" + balance);
         accountTypeInfo.setText(accountType + " Account");
+        
+        // Load profile picture
+        Image img = new Image(new File("src/alphabank/user/profile" + id + ".png").toURI().toString());
+        profilePicture.setFill(new ImagePattern(img));
 
         for (int i = 0; i < contactsList.size(); i++) {
             contactsListView.getItems().add(contactsList.get(i).name);
@@ -94,8 +105,7 @@ public class SendCashScreenController implements Initializable {
                     balance = getBalance(id);
                     successAlert(selected, amount);
                 }
-            }
-            else {
+            } else {
                 invalidRecipientAlert();
             }
 
