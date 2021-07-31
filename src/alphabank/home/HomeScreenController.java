@@ -7,9 +7,15 @@ import javafx.scene.control.TextArea;
 import alphabank.App;
 import alphabank.login.LoginScreenController;
 import alphabank.user.AccountData;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.text.Text;
 
 /**
@@ -31,10 +37,16 @@ public class HomeScreenController implements Initializable {
     @FXML
     private Button sendCashButton;
 
+    @FXML
+    private ListView recentList;
+
     // Set account data variables
     private int id = LoginScreenController.id;
     private AccountData accountData = App.bankingSystem.bank.getAccountById(id).getData();
     private String accountType = accountData.getAccountType();
+
+    // List of transaction messages
+    public List<String> transactions = new ArrayList();
 
     /**
      * Initializes the controller class.
@@ -47,6 +59,12 @@ public class HomeScreenController implements Initializable {
 
         if (accountType == "Premium") {
             sendCashButton.setVisible(true);
+        }
+
+        // Add message and refresh list
+        if (transactions.isEmpty()) {
+            transactions.add("Starting balance: " + balance);
+            refreshTransactions();
         }
     }
 
@@ -61,6 +79,11 @@ public class HomeScreenController implements Initializable {
 
         // Render balance to screen
         balanceInfo.setText("$" + Integer.toString(balance));
+        String message = "Withdrawal - $" + amount + " -- " + printDate();
+
+        // Add message and refresh list
+        transactions.add(message);
+        refreshTransactions();
     }
 
     /**
@@ -74,6 +97,12 @@ public class HomeScreenController implements Initializable {
 
         // Render balance to screen
         balanceInfo.setText("$" + Integer.toString(balance));
+
+        String message = "Deposit - $" + amount + " -- " + printDate();
+
+        // Add message and refresh list
+        transactions.add(message);
+        refreshTransactions();
     }
 
     /**
@@ -109,6 +138,26 @@ public class HomeScreenController implements Initializable {
         int balance = accountData.getBalance();
 
         return balance;
+    }
+
+    /**
+     * Prints current date and time.
+     */
+    public String printDate() {
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return "Time: " + date.format(formatDate);
+    }
+
+    /**
+     * Refreshes ListView of all transactions;
+     */
+    private void refreshTransactions() {
+        recentList.getItems().clear();
+
+        for (int i = 0; i < transactions.size(); i++) {
+            recentList.getItems().add(transactions.get(i));
+        }
     }
 
 }

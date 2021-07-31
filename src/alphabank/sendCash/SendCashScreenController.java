@@ -1,11 +1,13 @@
 package alphabank.sendCash;
 
 import alphabank.App;
+import alphabank.home.HomeScreenController;
 import alphabank.login.LoginScreenController;
 import alphabank.user.AccountData;
 import alphabank.user.Recipient;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,12 +39,14 @@ public class SendCashScreenController implements Initializable {
     private Text accountTypeInfo;
 
     // Get account data
+    private HomeScreenController home = new HomeScreenController();
     private int id = LoginScreenController.id;
     private AccountData accountData = App.bankingSystem.bank.getAccountById(id).getData();
+    
 
     // Set account data variables
     private String accountType = accountData.getAccountType();
-    // private ArrayList<Recipient> contactsList = App.bankingSystem.bank.getContactsList();
+    private ArrayList<Recipient> contactsList = App.bankingSystem.bank.getContactsList();
     // ObservableList observableList = FXCollections.observableArrayList();
 
     /**
@@ -56,7 +60,11 @@ public class SendCashScreenController implements Initializable {
         int balance = accountData.getBalance();
         balanceInfo.setText("$" + balance);
         accountTypeInfo.setText(accountType + " Account");
-        contactsListView.getItems().addAll("Item 1", "Item 2", "Item 3");
+
+        for (int i = 0; i < contactsList.size(); i++) {
+            contactsListView.getItems().add(contactsList.get(i).name);
+        }
+
         contactsListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
@@ -74,6 +82,10 @@ public class SendCashScreenController implements Initializable {
 
             // Render balance to screen
             balanceInfo.setText("$" + Integer.toString(balance));
+
+            // Add message and refresh list
+            String message = "Sent $" + amount + " to (name) -- " + home.printDate();
+            home.transactions.add(message);
         } catch (Exception e) {
             System.out.println(e);
 
@@ -103,4 +115,7 @@ public class SendCashScreenController implements Initializable {
 
         return balance;
     }
+    
+    
+    
 }
