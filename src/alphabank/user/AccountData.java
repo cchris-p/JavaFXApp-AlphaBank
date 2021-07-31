@@ -3,7 +3,8 @@ package alphabank.user;
 import java.io.File;
 
 /**
- *
+ * Account data class for data initialization and retrieval.
+ * 
  * @author pyles
  */
 public final class AccountData {

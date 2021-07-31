@@ -9,7 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * Scene driver for setting stage / scene.
+ * 
  * @author pyles
  */
 public class SceneController {

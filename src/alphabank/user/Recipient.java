@@ -1,7 +1,8 @@
 package alphabank.user;
 
 /**
- *
+ * Recipient info / data.
+ * 
  * @author pyles
  */
 public class Recipient {

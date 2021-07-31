@@ -12,7 +12,8 @@ import javafx.stage.Stage;
 
 
 /**
- *
+ * Initializes main JavaFX app.
+ * 
  * @author pyles
  */
 public class App extends Application {
@@ -44,6 +45,8 @@ public class App extends Application {
 
 
     /**
+     * Main function and launch.
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {

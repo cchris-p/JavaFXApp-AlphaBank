@@ -1,7 +1,8 @@
 package alphabank;
 
 /**
- *
+ * Error and data handling functionality.
+ * 
  * @author pyles
  */
 public class ActionResult<T> {

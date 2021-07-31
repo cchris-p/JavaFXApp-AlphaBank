@@ -4,11 +4,11 @@ import alphabank.ActionResult;
 import java.util.HashMap;
 import java.util.Map;
 import alphabank.App;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
- *
+ * Creates bank accounts with existing data.
+ * 
  * @author pyles
  */
 public class Bank {

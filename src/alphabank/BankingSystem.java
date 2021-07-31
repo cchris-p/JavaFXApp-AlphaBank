@@ -5,7 +5,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- *
+ * Banking system, login, deposit, withdrawal, and logout functionality
+ * 
  * @author pyles
  */
 public class BankingSystem {

@@ -1,7 +1,8 @@
 package alphabank.user;
 
 /**
- *
+ * Account class for withdraw, deposit, and balance functionality.
+ * 
  * @author pyles
  */
 public abstract class Account {
