@@ -15,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.text.Text;
 
 /**
@@ -63,7 +62,7 @@ public class HomeScreenController implements Initializable {
 
         // Add message and refresh list
         if (transactions.isEmpty()) {
-            transactions.add("Starting balance: " + balance);
+            transactions.add("Starting balance: $" + balance);
             refreshTransactions();
         }
     }

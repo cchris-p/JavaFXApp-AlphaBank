@@ -49,7 +49,5 @@ public final class AccountData {
                 + "AccountType: " + accountType;
     }
 
-    public int getBalance(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }
