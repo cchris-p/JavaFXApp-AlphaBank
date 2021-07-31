@@ -19,12 +19,12 @@ import javafx.stage.Stage;
 public class App extends Application {
     
     public static SceneController sceneController = new SceneController();
-
+    
     public static boolean isLoggedIn = false;
     
     public static BankingSystem bankingSystem = new BankingSystem(new Bank());
    
-    public final String 
+    private final String 
         LOGIN_SCREEN_FXML = "./login/LoginScreen.fxml";
     
     @Override

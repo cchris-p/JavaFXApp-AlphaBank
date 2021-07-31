@@ -3,7 +3,8 @@ package alphabank.user;
 import java.util.ArrayList;
 
 /**
- * Premium account funcionalties, allow premium users to send cash to other users.
+ * Premium account funcionalties, allow premium users to 
+ * send cash to other users as well as possess a premium overwithdraw amount.
  * 
  * @author pyles
  */

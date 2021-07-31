@@ -89,13 +89,22 @@ public class HomeScreenController implements Initializable {
      */
     public void withdraw(ActionEvent event) {
         int amount = Integer.parseInt(areaInfo.getText());
-        App.bankingSystem.withdraw(amount);
+        String message;
 
         int balance = getBalance(id);
 
+        if (amount <= balance) {
+            // Update balance
+            App.bankingSystem.withdraw(amount);
+            message = "Withdrawal - $" + amount + " -- " + printDate();
+            balance = getBalance(id);
+        } else {
+            // Show fail message
+            message = "Insufficient funds.";
+        }
+
         // Render balance to screen
         balanceInfo.setText("$" + Integer.toString(balance));
-        String message = "Withdrawal - $" + amount + " -- " + printDate();
 
         // Add message and refresh list
         transactions.add(message);
